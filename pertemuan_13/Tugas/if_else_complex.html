@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas If-Else Kompleks - Ahmad Paisal</title>
+</head>
+<body>
+    <h2>Analisis Kelayakan Kredit Kredit - Pertemuan 13</h2>
+    <p>Buka Tab Console (F12) untuk melihat hasil keputusan.</p>
+
+    <script>
+        // Logika If-Else Kompleks untuk mengecek persetujuan pinjaman
+        function cekKelayakanKredit(namaPemohon, gajiBulanan, skorKredit, punyaUtang) {
+            // Validasi tipe data input awal
+            if (typeof gajiBulanan !== 'number' || typeof skorKredit !== 'number') {
+                return "Error: Input gaji atau skor kredit harus berupa angka!";
+            }
+
+            // Validasi batas minimal skor kredit bank
+            if (skorKredit < 300 || skorKredit > 850) {
+                return `⚠️ Skor kredit ${namaPemohon} tidak valid (Batas: 300 - 850).`;
+            }
+
+            let keputusan;
+            let bungaTahunan;
+
+            // Struktur Percabangan Bersarang / Kompleks
+            if (gajiBulanan >= 10000000 && skorKredit >= 700) {
+                keputusan = "DISETUJUI (Prioritas Utama)";
+                bungaTahunan = 5; // Bunga kecil 5%
+            } else if (gajiBulanan >= 5000000 && skorKredit >= 600) {
+                if (punyaUtang === true) {
+                    keputusan = "DISETUJUI DENGAN SYARAT (Wajib Jaminan)";
+                    bungaTahunan = 8;
+                } else {
+                    keputusan = "DISETUJUI (Reguler)";
+                    bungaTahunan = 7;
+                }
+            } else if (gajiBulanan < 5000000 && skorKredit >= 650 && punyaUtang === false) {
+                keputusan = "PERLU TINJAUAN MANUAL";
+                bungaTahunan = 10;
+            } else {
+                keputusan = "DITOLAK (Resiko Gagal Bayar Tinggi)";
+                bungaTahunan = 0;
+            }
+
+            console.log("=== SISTEM ANALISIS KREDIT BANK ===");
+            console.log("Nama Pemohon  : " + namaPemohon);
+            console.log("Pendapatan    : Rp " + gajiBulanan);
+            console.log("Skor Kredit   : " + skorKredit);
+            console.log("Hasil Keputusan: " + keputusan);
+            if (bungaTahunan > 0) {
+                console.log("Suku Bunga    : " + bungaTahunan + "% per tahun");
+            }
+            console.log("===================================");
+        }
+
+        // Menjalankan fungsi simulasi
+        cekKelayakanKredit("Ahmad Paisal", 7500000, 680, true);
+    </script>
+</body>
+</html>

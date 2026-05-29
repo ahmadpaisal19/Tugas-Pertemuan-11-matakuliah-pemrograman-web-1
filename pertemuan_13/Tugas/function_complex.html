@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas Function Kompleks - Ahmad Paisal</title>
+</head>
+<body>
+    <h2>Sistem Point Reward Member Toko - Pertemuan 13</h2>
+    <p>Buka Tab Console (F12) untuk melihat hasil konversi poin belanja.</p>
+
+    <script>
+        // Fungsi Kompleks dengan kalkulasi matematika dan parameter terstruktur
+        function hitungRewardPelanggan(namaPelanggan, totalBelanja, statusMember) {
+            
+            // Validasi keaslian data pelanggan
+            if (typeof totalBelanja !== 'number' || totalBelanja <= 0) {
+                return "Transaksi tidak valid. Total belanja harus di atas Rp 0.";
+            }
+
+            let cashback = 0;
+            let poinDiperoleh = Math.floor(totalBelanja / 10000); // 1 Poin setiap Kelipatan Rp 10.000
+
+            // Penentuan bonus tambahan berdasarkan level keanggotaan
+            if (statusMember.toLowerCase() === 'gold') {
+                cashback = totalBelanja * 0.10; // Potongan 10%
+                poinDiperoleh += 50; // Bonus instan 50 poin
+            } else if (statusMember.toLowerCase() === 'silver') {
+                cashback = totalBelanja * 0.05; // Potongan 5%
+                poinDiperoleh += 20;
+            } else {
+                cashback = 0;
+            }
+
+            let totalAkhirBayar = totalBelanja - cashback;
+
+            console.log("=== REKAP REWARD APRESIASI MEMBER ===");
+            console.log("Nama Pelanggan : " + namaPelanggan);
+            console.log("Status Member  : " + statusMember.toUpperCase());
+            console.log("Total Belanja  : Rp " + totalBelanja);
+            console.log("Potongan Harga : Rp " + cashback);
+            console.log("-------------------------------------");
+            console.log("NILAI AKHIR    : Rp " + totalAkhirBayar);
+            console.log("Bonus Poin Baru: " + poinDiperoleh + " Poin");
+            console.log("=====================================");
+        }
+
+        // Eksekusi fungsi pengujian
+        hitungRewardPelanggan("Ahmad Paisal", 350000, "Gold");
+    </script>
+</body>
+</html>

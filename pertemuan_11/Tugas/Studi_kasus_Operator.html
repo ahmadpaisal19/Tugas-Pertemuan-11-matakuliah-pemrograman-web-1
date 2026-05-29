@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas Operator JavaScript - Ahmad Paisal</title>
+</head>
+<body>
+
+    <h2>Tugas Mandiri Pertemuan 11 - Logika Operator Kasir</h2>
+    <p>Silakan buka inspect element -> tab Console untuk melihat hasil outputnya.</p>
+
+    <script>
+        // Membuat fungsi kasir dengan nama yang berbeda
+        function hitungTransaksi(namaBarang, hargaAwal, jumlahBeli, potonganHarga) {
+            // Proses Perhitungan menggunakan Operator Aritmatika
+            let totalKotor = hargaAwal * jumlahBeli;
+            let totalBersih = totalKotor - potonganHarga;
+            
+            // Output hasil ke Console
+            console.log("=======================================");
+            console.log("          NOTA BELANJA DIGITAL         ");
+            console.log("=======================================");
+            console.log("Nama Produk   : " + namaBarang);
+            console.log("Harga Satuan  : Rp " + hargaAwal);
+            console.log("Jumlah Unit   : " + jumlahBeli + " pcs");
+            console.log("---------------------------------------");
+            console.log("Subtotal      : Rp " + totalKotor);
+            console.log("Diskon Toko   : Rp " + potonganHarga);
+            console.log("---------------------------------------");
+            console.log("TOTAL BAYAR   : Rp " + totalBersih);
+            console.log("=======================================");
+            console.log("   Terima Kasih Telah Berbelanja!  ");
+            console.log("=======================================");
+        }
+
+        // Jalankan fungsi dengan data belanjaan kamu sendiri (bisa kamu ubah angkanya bebas)
+        hitungTransaksi("Kemeja Flanel", 125000, 3, 15000);
+    </script>
+    
+</body>
+</html>
